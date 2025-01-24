@@ -1,4 +1,4 @@
-
+import './icons/partly-cloudy-day.svg'
 import weatherFunctions from "./weatherData.js";
 import { handleSearchClick,searchButton } from "./uiChanges.js";
 // styles

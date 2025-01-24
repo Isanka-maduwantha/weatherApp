@@ -19,7 +19,7 @@ function handleWeatherData(object) {
 }
 function fullWeatherData(object) {
     function getAddress(object) {
-      return object.address;
+      return object.address +" , " +object.resolvedAddress;
     }
     function getTemprature(Celsius = true) {
       let temp = object.temp;

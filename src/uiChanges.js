@@ -14,19 +14,27 @@ function handleSearchClick () {
     cityName = takeFormData();
     return cityName;
 }
-function getIcon (iconName) {return `../icons/${iconName}.svg`}
+function getIcon (iconName) {return require (`./icons/${iconName}.svg`)}
 function showWeather (weatherObj) {
     console.log(weatherObj)
     const showWeatherContainer = document.querySelector('.show-weather');
     const showAdress = `<h1 class="cityAddress"> ${weatherObj.address} </h1>`
     const showTemprature = `<div class="temp">${weatherObj.currentTemp}</div>`
-    const showWindSpeed = `<div class="temp">${weatherObj.windspeed}</div>`
+    const showWindSpeed = `<div class="windSpeed"><span>Wind Speed</span><span>${weatherObj.windspeed}</span></div>`
     let iconPath = getIcon(weatherObj.icon);
-    const showIcon = `<img src="${iconPath}"></img>`
-    const mainWeatherData = `<div class="mainWeatherData">${showAdress + showTemprature + showIcon} </div>` ;
-    const extraWeatherData =  `<div class="mainWeatherData">${showWindSpeed} </div>`
-
+    const showIcon = `<img class="weatherIcon" src="${iconPath}"></img>`
+    const mainWeatherData = `<div class=" weatherData">
+    <div class="mainWeatherData">
+     <div class="icon">${showIcon}</div>
+        <div> 
+         <h1>${showAdress} </h1>
+          <p>${showTemprature } </p>
+        </div>
+    </div> 
+    `;
+    const extraWeatherData =  `<div class="extraWeatherData weatherData">${showWindSpeed} </div>`
     showWeatherContainer.innerHTML = mainWeatherData+extraWeatherData;
     
 }
+
 export {searchButton,handleSearchClick,showWeather} ;
