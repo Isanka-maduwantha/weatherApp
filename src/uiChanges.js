@@ -9,7 +9,15 @@ function takeFormData () {
       }
      return formValues; 
 }
-
+function createExtraWeatherBox (extraWeatherObj) {
+    let showWindSpeed = "";
+    for (let [key, value] of Object.entries(extraWeatherObj)) {
+        if(value === null) value = "empty"
+       showWindSpeed += `<div class="${key}"><span class="extra-title">${key}</span><span>${value}</span></div>`
+      }
+      return showWindSpeed;
+    //    = 
+}
 function handleSearchClick () {
     cityName = takeFormData();
     return cityName;
@@ -20,7 +28,7 @@ function showWeather (weatherObj) {
     const showWeatherContainer = document.querySelector('.show-weather');
     const showAdress = `<h1 class="cityAddress"> ${weatherObj.address} </h1>`
     const showTemprature = `<div class="temp">${weatherObj.currentTemp}</div>`
-    const showWindSpeed = `<div class="windSpeed"><span class="extra-title">Wind Speed</span><span>${weatherObj.windspeed}</span></div>`
+    const extraWeather = createExtraWeatherBox (weatherObj.extraWeather)
     let iconPath = getIcon(weatherObj.icon);
     const showIcon = `<img class="weatherIcon" src="${iconPath}"></img>`
     const mainWeatherData = `<div class=" weatherData">
@@ -32,7 +40,7 @@ function showWeather (weatherObj) {
         </div>
     </div> 
     `;
-    const extraWeatherData =  `<div class="extraWeatherData weatherData">${showWindSpeed} </div>`
+    const extraWeatherData =  `<div class="extraWeatherData weatherData">${extraWeather}</div>`
     showWeatherContainer.innerHTML = mainWeatherData+extraWeatherData;
     
 }

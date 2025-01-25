@@ -13,7 +13,14 @@ function handleWeatherData(object) {
     return {
       address: weatherFullToday.getAddress(object),
       currentTemp: weatherFullToday.getTemprature(),
-      windspeed: weatherFullToday.getWindSpeed(),
+      extraWeather: {
+        'Wind speed':weatherFullToday.getWindSpeed(),
+        Humidity :weatherFullToday.getHumidity(),
+        Precipitation : weatherFullToday.getPrecipitation(),
+        Visibility : weatherFullToday.getVisibility(),
+
+
+      },
       icon: weatherFullToday.getIcon(),
     };
 }
@@ -38,11 +45,23 @@ function fullWeatherData(object) {
     function getIcon() {
       return object.icon;
     }
+    function getHumidity() {
+      return object.humidity + " °C";
+    }
+    function getPrecipitation () {
+      return object.precip ;
+    }
+    function getVisibility () {
+      return object.visibility + " Km";
+    }
     return {
       getAddress,
       getTemprature,
       getWindSpeed,
+      getHumidity,
       getIcon,
+      getPrecipitation,
+      getVisibility,
     };
   }
 function weatherFunctions (city) {
