@@ -15,6 +15,10 @@
     --border-radius:20px;
     --defaultPadding:10px;
 }
+*::selection {
+    background-color: var(--weather-app-background--semi-trans);
+    
+}
 body{
     background-color: rgb(32, 32, 32);
     display: flex;
@@ -47,7 +51,6 @@ body{
 #getCityName{
     border-radius: var(--border-radius);
     height: 10vh;
-    background-color: var(--weather-app-background);
     display: flex;
     position: relative;
     padding: 10px ;
@@ -102,6 +105,9 @@ body{
     .cityAddress{
         text-transform: capitalize;
     }
+    
+   
+    
     .mainWeatherData {
         padding: var(--defaultPadding);
         display: flex;
@@ -110,7 +116,12 @@ body{
         align-items: center;
         margin-bottom: calc(var(--defaultPadding)*3);
         height: 40vh;
-        /* background-color: var(--weather-app-background--semi-trans); */
+        cursor: pointer;
+      /* background-color: var(--weather-app-background--semi-trans); */
+      h1,.temp{
+        text-shadow: 5px 1px 5px var(--weather-app-background);
+        text-align: center;
+      }
     h1{
         font-size: 1.5rem;
         text-align: center;
@@ -120,39 +131,45 @@ body{
         text-align: center;
     }
     .temp{
-        text-align: center;
+       
+        font-size: 4rem;
+        font-weight: bold;
     }
     }
 
     .extraWeatherData{
-        background: var(--weather-app-background-low);
+        /* background: var(--weather-app-background-low); */
         min-height: 35vh;
         padding:  calc(var(--defaultPadding));
 
         display: grid;
         grid-template-columns: repeat(auto-fill,minmax(200px,2fr));
-        gap: calc(var(--defaultPadding)*1.5);;
+        gap: calc(var(--defaultPadding)*0.9);
         grid-template-rows: 1fr 1fr 1fr;
         border-radius: var(--border-radius);
         div{
             padding: 10px;
-            border-radius: var(--border-radius);
+            border-radius: 5px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: var(--weather-app-background--semi-trans);
+            background-color: var(--weather-app-background-low);
+            &:hover{
+                transform: scale(1.01);
+                cursor:pointer;
+            }
 
             span[class="extra-title"]{
                 font-size: 80%;
+                padding: 2px;
                 
             }
         }
-    }
-    .windSpeed{}
-    .temp{
-        font-size: 4rem;
-        font-weight: bold;
+        div span::selection{
+            background-color: var(--weather-app-background--semi-trans);
+            /* color: red; */
+        }
     }
     .weatherIcon{
         width: 100%;
