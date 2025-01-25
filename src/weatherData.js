@@ -19,16 +19,16 @@ function handleWeatherData(object) {
 }
 function fullWeatherData(object) {
     function getAddress(object) {
-      return object.address +" , " +object.resolvedAddress;
+      return object.resolvedAddress;
     }
     function getTemprature(Celsius = true) {
       let temp = object.temp;
       if (!Celsius) {
         // convert to faranhite with one decimal point
         temp = Math.round((temp * 2 + 30) * 10) / 10;
-        temp += " F";
+        temp += " °F";
       } else {
-        temp += " C";
+        temp += " °C";
       }
       return temp;
     }

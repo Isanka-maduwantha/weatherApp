@@ -20,7 +20,7 @@ function showWeather (weatherObj) {
     const showWeatherContainer = document.querySelector('.show-weather');
     const showAdress = `<h1 class="cityAddress"> ${weatherObj.address} </h1>`
     const showTemprature = `<div class="temp">${weatherObj.currentTemp}</div>`
-    const showWindSpeed = `<div class="windSpeed"><span>Wind Speed</span><span>${weatherObj.windspeed}</span></div>`
+    const showWindSpeed = `<div class="windSpeed"><span class="extra-title">Wind Speed</span><span>${weatherObj.windspeed}</span></div>`
     let iconPath = getIcon(weatherObj.icon);
     const showIcon = `<img class="weatherIcon" src="${iconPath}"></img>`
     const mainWeatherData = `<div class=" weatherData">

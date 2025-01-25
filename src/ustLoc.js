@@ -11,10 +11,11 @@ async function getUserLocation() {
 async function getUserCity() {
     await  getUserLocation().then((object)=>{
      userLocation =  object.city.name;
-     console.log(userLocation)
+     localStorage.setItem ("city",userLocation)
+   
     })
     
   }
-  getUserCity();
+  getUserCity()
 
-  export { userLocation};
+  export { getUserCity};
